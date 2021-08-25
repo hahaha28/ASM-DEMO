@@ -1,0 +1,27 @@
+plugins {
+    id 'groovy'
+    id 'maven'
+}
+
+group = 'com.example.asm.plugin'
+version = '1.0.0'
+
+uploadArchives{
+    repositories {
+        mavenDeployer{
+            repository(url:uri('../asm_plugin_repo'))
+        }
+    }
+}
+
+dependencies {
+
+    implementation gradleApi()
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:3.4.2'
+
+    implementation 'org.ow2.asm:asm-commons:9.2'
+
+
+}
