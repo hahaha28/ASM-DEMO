@@ -72,7 +72,7 @@ public class MyTransform extends Transform {
                 // 找到转换输入中所有的class文件
                 List<File> files = filterClassFiles(directoryInputFile);
 
-                // TODO 编辑class文件，添加逻辑
+                // 编辑class文件，添加逻辑
                 for (File file : files) {
                     System.out.println("file name=" + file.getName());
                     FileInputStream fis = null;
@@ -80,27 +80,6 @@ public class MyTransform extends Transform {
                     try {
                         fis = new FileInputStream(file);
                         ClassReader classReader = new ClassReader(fis);
-//
-//                        ClassVisitor classVisitor = new ClassVisitor(Opcodes.ASM5) {
-//                            @Override
-//                            public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
-//                                super.visit(version, access, name, signature, superName, interfaces);
-//                                System.out.println("-----------------");
-//                                System.out.println("className =" + name);
-//                            }
-//
-//                            @Override
-//                            public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-//                                System.out.println("visitMethod =" + name);
-//                                return new MethodVisitor(api, super.visitMethod(access, name, descriptor, signature, exceptions)) {
-//                                    @Override
-//                                    public void visitInvokeDynamicInsn(String name, String descriptor, Handle bootstrapMethodHandle, Object... bootstrapMethodArguments) {
-//
-//                                        super.visitInvokeDynamicInsn(name, descriptor, bootstrapMethodHandle, bootstrapMethodArguments);
-//                                    }
-//                                };
-//                            }
-//                        };
 
                         ClassWriter classWriter = new ClassWriter(0);
 
@@ -109,20 +88,16 @@ public class MyTransform extends Transform {
 
                         byte[] bytes = classWriter.toByteArray();
 
-                        fis.close();
 
                         fos = new FileOutputStream(file);
 
                         fos.write(bytes);
                         fos.flush();
-//                        fos.close();
-//                        fis.close();
-//                        fos.close();
 
                     } catch (Throwable throwable) {
                         throwable.printStackTrace();
                     } finally {
-//                        closeQuietly(fis);
+                        closeQuietly(fis);
                         closeQuietly(fos);
                     }
                 }

@@ -12,7 +12,6 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private HashMap<String, Long> ASM_lastClickTimeRecorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,40 +22,20 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.button);
 
         textView.setOnClickListener(v -> {
-//            if(ASM_lastClickTimeRecorder == null){
-//                ASM_lastClickTimeRecorder = new HashMap<>();
-//            }
-//            Long ASM_lastClickTime = ASM_lastClickTimeRecorder.get("key");
-//            ASM_lastClickTimeRecorder.put("key", System.currentTimeMillis());
-//            if (ASM_lastClickTime == null) {
-//                ASM_lastClickTime = 0L;
-//            }
-//            if (System.currentTimeMillis() - ASM_lastClickTime < 1000L) {
-//                return;
-//            }
-//
-//            Log.e("tag", "click");
-//            Log.e("tag", "click2");
-//            Log.e("tag", "click3");
-//            Log.e("tag", "click4");
-//            Log.e("tag", "click5");
-//            Log.e("tag", "click6");
 
-
+            Log.e("tag","click textview");
         });
 
-        button.setOnClickListener(v -> {
-
-            Log.e("tag", "click button");
-
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("tag","click button");
+            }
         });
 
 
     }
 
-    public void  test(View v){
-        Log.e("tag","test");
-    }
 
 
 }

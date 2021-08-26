@@ -11,6 +11,5 @@ public class MyPlugin implements Plugin<Project> {
     public void apply(Project project) {
         System.out.println("plugin execute [write by java]");
         project.getExtensions().getByType(AppExtension.class).registerTransform(new MyTransform());
-//        extension.registerTransform(new MyTransform());
     }
 }
